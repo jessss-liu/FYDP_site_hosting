@@ -206,7 +206,7 @@ function App() {
         </div>
         <div className="hero-card hero-card-photo">
           <div className="card-scribble">✦</div>
-          <img src={`${import.meta.env.BASE_URL}boxing-illustration.svg`} alt="Ink-style boxer standing in a boxing ring" className="hero-photo" loading="eager" />
+          <img src={`${import.meta.env.BASE_URL}boxing-figure.png`} alt="Boxer standing in a boxing ring" className="hero-photo" loading="eager" />
           <div className="hero-photo-overlay">
             <p className="hero-card-label">Design Log</p>
             <p className="hero-photo-tagline">All work progress and updates will be made on this side.</p>
