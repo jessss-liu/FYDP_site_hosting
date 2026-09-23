@@ -200,7 +200,7 @@ function App() {
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow"><span className="eyebrow-line" /> Group 50</p>
-          <h1>INTELLIGENT<br />BOXING<br /><em>design log.</em></h1>
+          <h1>INTELLIGENT<br />BOXING BOT<br />FYDP <em>design log.</em></h1>
           <p className="hero-description">One shared space for the ideas, decisions, and small wins moving our project forward.</p>
           <button className="primary-button" onClick={() => setIsComposerOpen(true)}><Plus size={18} /> Log an update <ArrowUpRight size={16} /></button>
         </div>
