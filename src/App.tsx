@@ -199,9 +199,13 @@ function App() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span className="eyebrow-line" /> Group 50</p>
-          <h1>INTELLIGENT<br />BOXING BOT<br />FYDP <em>design log.</em></h1>
-          <p className="hero-description">One shared space for the ideas, decisions, and small wins moving our project forward.</p>
+          <p className="eyebrow"><span className="eyebrow-line" /> UW Tron’27 Capstone Group 50</p>
+          <h1>INTELLIGENT<br />BOXING TRAINING<br />SYSTEM <em>design log.</em></h1>
+          <p className="hero-description">The complete design and development timeline of a boxing training system that teaches skills, tracks performance and provides real time feedback.</p>
+          <div className="project-status">
+            <p><strong>Current Status:</strong> Finalizing Scope &amp; Brainstorming Overall System Design</p>
+            <p>Follow along for research updates, design decisions, and prototype build progress as this project morphs from an idea to a functioning demo over the course of 8 months.</p>
+          </div>
           <button className="primary-button" onClick={() => setIsComposerOpen(true)}><Plus size={18} /> Log an update <ArrowUpRight size={16} /></button>
         </div>
         <div className="hero-card hero-card-photo">
