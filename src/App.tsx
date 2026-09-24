@@ -51,6 +51,32 @@ function App() {
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
+    const buildSha = import.meta.env.VITE_BUILD_SHA;
+    if (!buildSha) return;
+
+    async function checkForNewBuild() {
+      try {
+        const response = await fetch(`${import.meta.env.BASE_URL}version.json?t=${Date.now()}`, { cache: 'no-store' });
+        if (!response.ok) return;
+        const { sha } = await response.json() as { sha?: string };
+        if (!sha || sha === buildSha) return;
+
+        const reloadKey = `fydp-build-reload-${sha}`;
+        if (sessionStorage.getItem(reloadKey)) return;
+        sessionStorage.setItem(reloadKey, '1');
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('v', sha.slice(0, 12));
+        window.location.replace(url.toString());
+      } catch {
+        // Version checks should never block the site from loading.
+      }
+    }
+
+    void checkForNewBuild();
+  }, []);
+
+  useEffect(() => {
     async function loadEntries() {
       const { data, error } = await supabase
         .from('design_log_entries')
@@ -202,10 +228,11 @@ function App() {
           <p className="eyebrow"><span className="eyebrow-line" /> UW Tron’27 Capstone Group 50</p>
           <h1>INTELLIGENT<br />BOXING TRAINING<br />SYSTEM <em>design log.</em></h1>
           <p className="hero-description">The complete design and development timeline of a boxing training system that teaches skills, tracks performance and provides real time feedback.</p>
-          <div className="project-status">
-            <p><strong>Current Status:</strong> Finalizing Scope &amp; Brainstorming Overall System Design</p>
-            <p>Follow along for research updates, design decisions, and prototype build progress as this project morphs from an idea to a functioning demo over the course of 8 months.</p>
+          <div className="status-card" aria-label="Current project status">
+            <div className="status-card-topline"><span className="status-dot" /> Current status</div>
+            <p>Finalizing Scope &amp; Brainstorming Overall System Design</p>
           </div>
+          <p className="hero-followup">Follow along for research updates, design decisions, and prototype build progress as this project morphs from an idea to a functioning demo over the course of 8 months.</p>
           <button className="primary-button" onClick={() => setIsComposerOpen(true)}><Plus size={18} /> Log an update <ArrowUpRight size={16} /></button>
         </div>
         <div className="hero-card hero-card-photo">
