@@ -34,6 +34,10 @@ jobs:
         env:
           VITE_SUPABASE_URL: https://jviwdsatxbaqdvonmtut.supabase.co
           VITE_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2aXdkc2F0eGJhcWR2b25tdHV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk1OTIwNjUsImV4cCI6MjEwNTE2ODA2NX0.y4Gxz5-289XP8yGn_6A98Pyqnk6icF3tnSENsHHZBss
+          VITE_BUILD_SHA: ${{ github.sha }}
+
+      - name: Write build version
+        run: printf '{"sha":"%s"}\n' "$GITHUB_SHA" > dist/version.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
