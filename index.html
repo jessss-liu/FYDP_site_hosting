@@ -9,6 +9,27 @@
     <title>Intelligent Boxing Training System FYDP Design Log</title>
     <meta property="og:image" content="https://bolt.new/static/og_default.png" />
     <meta property="og:title" content="Intelligent Boxing Training System FYDP Design Log" />
+    <script>
+      (async () => {
+        const buildSha = '%VITE_BUILD_SHA%';
+        try {
+          const response = await fetch('./version.json?t=' + Date.now(), { cache: 'no-store' });
+          if (!response.ok) return;
+          const data = await response.json();
+          const latestSha = data && data.sha;
+          if (!latestSha || !buildSha || latestSha === buildSha) return;
+
+          const url = new URL(window.location.href);
+          const latestVersion = latestSha.slice(0, 12);
+          if (url.searchParams.get('v') === latestVersion) return;
+
+          url.searchParams.set('v', latestVersion);
+          window.location.replace(url.toString());
+        } catch (_) {
+          // Never block the site if the version check fails.
+        }
+      })();
+    </script>
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
   </head>
