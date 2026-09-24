@@ -209,7 +209,7 @@ function App() {
           <img src={`${import.meta.env.BASE_URL}boxing-figure.png`} alt="Boxer standing in a boxing ring" className="hero-photo" loading="eager" />
           <div className="hero-photo-overlay">
             <p className="hero-card-label">Design Log</p>
-            <p className="hero-photo-tagline">All work progress and updates will be made on this side.</p>
+            <p className="hero-photo-tagline">All work progress and updates will be made on this site.</p>
           </div>
         </div>
       </section>
@@ -246,7 +246,7 @@ function App() {
         })}</div>}
       </section>
 
-      <footer><span>Group 50 / Intelligent Boxing Training Bob</span><span>Built together, one note at a time <span className="footer-star">✦</span></span></footer>
+      <footer><span>Group 50 / Intelligent Boxing Training System</span><span>Built together, one note at a time <span className="footer-star">✦</span></span></footer>
 
       {isComposerOpen && <div className="modal-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setIsComposerOpen(false); }}><section className="composer" role="dialog" aria-modal="true" aria-labelledby="composer-title"><div className="composer-header"><div><p className="eyebrow"><span className="eyebrow-line" /> New entry</p><h2 id="composer-title">What did you move forward?</h2></div><button className="close-button" onClick={() => setIsComposerOpen(false)} aria-label="Close">×</button></div><form onSubmit={handleSubmit}><label>Headline<input autoFocus value={form.title} onChange={(event) => setForm({ ...form, title: event.target.value })} placeholder="e.g. Chose our visual direction" /></label><label>Tell the story<textarea value={form.description} onChange={(event) => setForm({ ...form, description: event.target.value })} placeholder="A sentence or two about what happened…" rows={4} /></label><div className="upload-field">{imagePreview ? <div className="upload-preview"><img src={imagePreview} alt="Selected preview" /><button type="button" className="upload-remove" onClick={clearImage} aria-label="Remove image"><X size={14} /></button></div> : <label className="upload-dropzone"><ImagePlus size={22} /><span>Add a photo</span><input type="file" accept="image/*" capture="environment" onChange={handleImageSelect} style={{ position: 'absolute', opacity: 0, inset: 0, cursor: 'pointer' }} /></label>}</div><div className="form-grid"><label>Your name<input value={form.member} onChange={(event) => setForm({ ...form, member: event.target.value })} placeholder="e.g. Maya" /></label><label>Type<select value={form.category} onChange={(event) => setForm({ ...form, category: event.target.value })}>{categories.map((category) => <option key={category}>{category}</option>)}</select></label></div><div className="composer-actions"><button type="button" className="secondary-button" onClick={() => setIsComposerOpen(false)}>Cancel</button><button className="primary-button" type="submit" disabled={isSaving || isUploading}>{isSaving || isUploading ? <LoaderCircle className="spin" size={17} /> : <Plus size={17} />} {isUploading ? 'Uploading photo…' : isSaving ? 'Saving…' : 'Add to timeline'}</button></div></form></section></div>}
     </main>
